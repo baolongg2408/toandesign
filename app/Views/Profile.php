@@ -20,7 +20,7 @@
   
 <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary sticky-top">
   <div class="container">
-    <a class="navbar-brand brand" href="<?= site_url('profile') ?>">
+    <a class="navbar-brand brand" href="<?= base_url('/') ?>">
       Phạm Đức Toàn <span class="brand-mark">– ToanDesign</span>
     </a>
 
@@ -35,17 +35,30 @@
         <ul class="navbar-nav ms-auto gap-lg-2">
         <?php foreach ($topics as $t): 
                 $slug = url_title($t, '-', true);
-                $isActive = (service('uri')->getSegment(2) === $slug);
+                 // Lấy segment 2, nếu không có thì trả về ''
+                 $uri = service('uri');
+                    $seg2 = $uri->getTotalSegments() >= 2 ? $uri->getSegment(2) : '';
+                $isActive = ($seg2 === $slug);
         ?>
             <li class="nav-item">
             <a class="nav-link <?= $isActive ? 'active' : '' ?>"
                 href="<?= site_url('topic/'.$slug) ?>#projects"
-                data-topic="<?= esc($t) ?>">
+                data-topic="<?= esc($t) ?>"
+                data-bs-toggle="collapse"          
+                data-bs-target="#mainNav"           
+                >
                 <?= esc($t) ?>
             </a>
             </li>
         <?php endforeach; ?>
         </ul>
+        <div class="ms-lg-3 mt-2 mt-lg-0">
+          <a href="<?= site_url('login') ?>"
+            class="btn btn-outline-dark btn-sm">
+            <i class="fa-solid fa-user-shield me-1"></i> Admin
+          </a>
+        </div>
+
     </div>
   </div>
 </nav>

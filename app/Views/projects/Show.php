@@ -24,7 +24,7 @@
   <!-- AppBar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary appbar fixed-top">
     <div class="container">
-       <a class="navbar-brand brand" href="<?= site_url('profile') ?>">
+       <a class="navbar-brand brand" href="<?= site_url('/') ?>">
       Phạm Đức Toàn <span class="brand-mark">– ToanDesign</span>
     </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
